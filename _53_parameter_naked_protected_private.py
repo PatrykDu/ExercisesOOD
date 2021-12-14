@@ -7,4 +7,6 @@ class Laptop:
 
 
 laptop = Laptop('Acer', 'Predator', 5490)
-print(laptop.__dict__)
+print('brand -> {}'.format(laptop.brand))
+print('model -> {}'.format(laptop._model))
+print('price -> {}'.format(laptop._Laptop__price))
