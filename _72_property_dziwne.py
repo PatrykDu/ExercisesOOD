@@ -1,7 +1,3 @@
-import sys
-sys.setrecursionlimit(1500)
-
-
 class Game:
 
     def __init__(self, level=0):
