@@ -9,10 +9,11 @@ class Doc:
     def __str__(self):
         return f'{self.string}'
 
-    def __add__(self, other):
-        return str(self.__str__() + ' ' + other.__str__())
+    def __iadd__(self, other):
+        return Doc(self.string + ' & ' + other.string)
 
 
-doc1 = Doc('Python')
-doc2 = Doc('3.8')
-print(doc1 + doc2)
+doc1 = Doc('sport')
+doc2 = Doc('activity')
+doc1 += doc2
+print(doc1)

@@ -12,6 +12,13 @@ class Vector:
     def __len__(self):
         return len(self.components)
 
+    def __add__(self, other):
+        output = []
+        for s, o in zip(self.components, other.components):
+            output.append(s + o)
+        return tuple(output)
 
-v1 = Vector(-3, 4, 2)
-print(len(v1))
+
+v1 = Vector(4, 2)
+v2 = Vector(-1, 3)
+print(v1 + v2)
