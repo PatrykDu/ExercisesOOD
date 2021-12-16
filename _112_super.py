@@ -5,10 +5,6 @@ class Vehicle:
         self.color = color
         self.year = year
 
-    def display_attrs(self):
-        for k, v in self.__dict__.items():
-            print('{} -> {}'.format(k, v))
-
 
 class Car(Vehicle):
 
@@ -17,6 +13,8 @@ class Car(Vehicle):
         self.horsepower = horsepower
 
 
-car = Car('Opel', 'black', 2018, 160)
+vehicle = Vehicle('Tesla', 'red', 2020)
+car = Car('Tesla', 'red', 2020, 300)
 
-car.display_attrs()
+print(vehicle.__dict__)
+print(car.__dict__)
