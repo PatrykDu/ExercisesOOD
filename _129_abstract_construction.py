@@ -26,13 +26,12 @@ class DisabledTaxPayer(TaxPayer):
 class WorkerTaxPayer(TaxPayer):
 
     def calculate_tax(self):
-        if self.salary <= 80000:
+        if self.salary < 80000:
             return self.salary * 0.17
         else:
             return 80000 * 0.17 + (self.salary - 80000) * 0.32
 
 
-worker1 = WorkerTaxPayer(70000)
-worker2 = WorkerTaxPayer(95000)
-print(worker1.calculate_tax())
-print(worker2.calculate_tax())
+tax_payers = [StudentTaxPayer(50000), DisabledTaxPayer(70000), WorkerTaxPayer(68000), WorkerTaxPayer(120000)]
+for tax_payer in tax_payers:
+    print(round(tax_payer.calculate_tax(), 1))
