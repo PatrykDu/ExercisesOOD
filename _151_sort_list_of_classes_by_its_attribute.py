@@ -1,4 +1,5 @@
 import uuid
+import operator
 
 
 class Product:
@@ -10,9 +11,6 @@ class Product:
 
     def __repr__(self):
         return f"Product(product_name='{self.product_name}', price={self.price})"
-
-    def __str__(self):
-        return 'Product Name: {} | Price: {}'.format(self.product_name, self.price)
 
     @staticmethod
     def get_id():
@@ -34,6 +32,24 @@ class Warehouse:
             if product_name == product.product_name:
                 self.products.remove(product)
 
+    def display_products(self):
+        for product in self.products:
+            print(f'Product ID: {product.product_id} | Product name: '
+                  f'{product.product_name} | Price: {product.price}')
 
-product = Product('Mobile Phone', 1990.0)
-print(product)
+    def sort_by_price(self, ascending=True):
+        sorted_products = sorted(self.products, key=operator.attrgetter('price'))
+        if ascending:
+            return sorted_products
+        elif not ascending:
+            return sorted_products[::-1]
+
+
+warehouse = Warehouse()
+warehouse.add_product('Laptop', 3900.0)
+warehouse.add_product('Mobile Phone', 1990.0)
+warehouse.add_product('Camera', 2900.0)
+warehouse.add_product('USB Cable', 24.9)
+warehouse.add_product('Mouse', 49.0)
+for product in warehouse.sort_by_price():
+    print(product)
